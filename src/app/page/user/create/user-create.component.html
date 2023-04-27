@@ -1,0 +1,50 @@
+
+
+<h4>Cadastro de pessoa</h4>
+
+<form  [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+
+
+  <mat-form-field appearance="outline" class="user-full-width">
+    <mat-label>Nome</mat-label>
+    <input type="text" matInput formControlName="name" [errorStateMatcher]="matcher" placeholder="Nome">
+    <mat-error *ngIf="userForm.get('name')?.hasError('required') && userForm.get('name')?.touched">
+      Nome é <strong>obrigatório</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="user-full-width">
+    <mat-label>E-mail</mat-label>
+    <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher" placeholder="E-mail">
+    <mat-error *ngIf="userForm.get('email')?.hasError('required') && userForm.get('email')?.touched">
+      E-mail é <strong>obrigatório</strong>
+    </mat-error>
+    <mat-error *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched && !userForm.get('email')?.hasError('required')">
+      E-mail é <strong>inválido</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="user-full-width">
+    <mat-label>Telefone</mat-label>
+    <input type="text" matInput formControlName="phone" [errorStateMatcher]="matcher" placeholder="Telefone">
+    <mat-error *ngIf="userForm.get('phone')?.hasError('required') && userForm.get('phone')?.touched">
+      Telefone é <strong>obrigatório</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="user-full-width">
+    <mat-label>Endereço</mat-label>
+    <input type="text" matInput formControlName="address" [errorStateMatcher]="matcher" placeholder="Endereço">
+    <mat-error *ngIf="userForm.get('address')?.hasError('required') && userForm.get('address')?.touched">
+      Endereço é <strong>obrigatório</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <div class="box-buttons-action">
+
+    <button mat-flat-button color="primary" type="submit" [disabled]="userForm.invalid">Salvar</button>
+    <button mat-button color="primary" routerLink="/users">Cancelar</button>
+  </div>
+
+</form>
+      
